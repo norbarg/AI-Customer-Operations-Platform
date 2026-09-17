@@ -1,0 +1,10 @@
+[project]
+name = "ai-customer-operations-platform"
+version = "0.1.0"
+description = "AI-powered customer operations automation platform"
+readme = "README.md"
+authors = [
+    { name = "nobarg" }
+]
+requires-python = ">=3.12"
+dependencies = []
