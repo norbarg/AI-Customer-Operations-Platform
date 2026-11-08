@@ -1,7 +1,11 @@
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DateTime, String, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+if TYPE_CHECKING:
+    from app.requests.models import Request
 
 from app.db.base import Base
 
@@ -43,4 +47,17 @@ class Customer(Base):
         DateTime(timezone=True),
         server_default=func.now(),
         onupdate=func.now(),
+    )
+
+    requests: Mapped[list["Request"]] = relationship(
+        "Request",
+        back_populates="customer",
+        cascade="all, delete-orphan",
+    )
+
+    subscription = relationship(
+        "Subscription",
+        back_populates="customer",
+        uselist=False,
+        cascade="all, delete-orphan",
     )
