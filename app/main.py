@@ -8,6 +8,7 @@ from app.approvals.router import router as approvals_router
 from app.core.config import settings
 from app.customers.router import router as customers_router
 from app.db.session import get_db
+from app.documents.router import router as documents_router
 from app.payments.router import router as payments_router
 from app.requests.router import router as requests_router
 from app.subscriptions.router import router as subscriptions_router
@@ -26,6 +27,7 @@ app.include_router(tasks_router)
 app.include_router(approvals_router)
 app.include_router(subscriptions_router)
 app.include_router(payments_router)
+app.include_router(documents_router)
 
 
 @app.get("/health")
