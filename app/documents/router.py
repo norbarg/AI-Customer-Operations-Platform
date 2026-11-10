@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_db
 from app.documents.chunk_repository import DocumentChunkRepository
 from app.documents.chunk_service import DocumentChunkService
+from app.documents.indexing_service import DocumentIndexingService
 from app.documents.schemas import (
     DocumentChunkResponse,
     DocumentCreate,
@@ -114,3 +115,20 @@ async def get_document_chunks(
         db,
         document_id,
     )
+
+
+@router.post(
+    "/{document_id}/index",
+)
+async def index_document(
+    document_id: int,
+    db: Annotated[AsyncSession, Depends(get_db)],
+) -> dict[str, int]:
+    indexed_chunks = await DocumentIndexingService.index_document(
+        db,
+        document_id,
+    )
+
+    return {
+        "indexed_chunks": indexed_chunks,
+    }

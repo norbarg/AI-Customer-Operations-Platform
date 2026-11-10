@@ -11,6 +11,7 @@ from app.db.session import get_db
 from app.documents.router import router as documents_router
 from app.payments.router import router as payments_router
 from app.requests.router import router as requests_router
+from app.search.router import router as search_router
 from app.subscriptions.router import router as subscriptions_router
 from app.tasks.router import router as tasks_router
 from app.users.router import router as users_router
@@ -28,6 +29,7 @@ app.include_router(approvals_router)
 app.include_router(subscriptions_router)
 app.include_router(payments_router)
 app.include_router(documents_router)
+app.include_router(search_router)
 
 
 @app.get("/health")

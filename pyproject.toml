@@ -1,7 +1,7 @@
 [project]
 name = "ai-customer-operations-platform"
 version = "0.1.0"
-description = "AI-powered customer operations automation platform"
+description = "uv run uvicorn app.main:app --reload"
 readme = "README.md"
 authors = [
     { name = "nobarg" }
@@ -11,8 +11,10 @@ dependencies = [
     "alembic>=1.20.1",
     "asyncpg>=0.32.0",
     "fastapi>=0.162.0",
+    "openai>=3.49.0",
     "pydantic-settings>=2.16.2",
     "pydantic[email]>=2.14.3",
+    "qdrant-client>=1.20.0",
     "sqlalchemy[asyncio]>=2.1.8",
     "uvicorn>=0.54.0",
 ]
