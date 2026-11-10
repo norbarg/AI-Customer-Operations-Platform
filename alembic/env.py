@@ -6,17 +6,17 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
-from app.approvals.models import Approval  # noqa: F401
 from app.core.config import settings
-from app.customers.models import Customer  # noqa: F401
 from app.db.base import Base
-from app.documents.chunk_models import DocumentChunk  # noqa: F401
-from app.documents.models import Document  # noqa: F401
-from app.payments.models import Payment  # noqa: F401
-from app.requests.models import Request  # noqa: F401
-from app.subscriptions.models import Subscription  # noqa: F401
-from app.tasks.models import Task  # noqa: F401
-from app.users.models import User  # noqa: F401
+from app.knowledge.documents.chunk_models import DocumentChunk  # noqa: F401
+from app.knowledge.documents.models import Document  # noqa: F401
+from app.modules.approvals.models import Approval  # noqa: F401
+from app.modules.customers.models import Customer  # noqa: F401
+from app.modules.payments.models import Payment  # noqa: F401
+from app.modules.requests.models import Request  # noqa: F401
+from app.modules.subscriptions.models import Subscription  # noqa: F401
+from app.modules.tasks.models import Task  # noqa: F401
+from app.modules.users.models import User  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

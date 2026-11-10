@@ -4,17 +4,17 @@ from fastapi import Depends, FastAPI
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.approvals.router import router as approvals_router
 from app.core.config import settings
-from app.customers.router import router as customers_router
 from app.db.session import get_db
-from app.documents.router import router as documents_router
-from app.payments.router import router as payments_router
-from app.requests.router import router as requests_router
-from app.search.router import router as search_router
-from app.subscriptions.router import router as subscriptions_router
-from app.tasks.router import router as tasks_router
-from app.users.router import router as users_router
+from app.knowledge.documents.router import router as documents_router
+from app.knowledge.search.router import router as search_router
+from app.modules.approvals.router import router as approvals_router
+from app.modules.customers.router import router as customers_router
+from app.modules.payments.router import router as payments_router
+from app.modules.requests.router import router as requests_router
+from app.modules.subscriptions.router import router as subscriptions_router
+from app.modules.tasks.router import router as tasks_router
+from app.modules.users.router import router as users_router
 
 app = FastAPI(
     title=settings.app_name,
