@@ -1,32 +1,29 @@
-from openai import AsyncOpenAI
-
-from app.core.config import settings
-
-client = AsyncOpenAI(
-    api_key=settings.openrouter_api_key,
-    base_url=settings.openrouter_base_url,
-)
+from sentence_transformers import SentenceTransformer
 
 
 class EmbeddingService:
-    @staticmethod
+    _model = SentenceTransformer("sentence-transformers/all-MiniLM-L12-v2")
+
+    @classmethod
     async def embed_text(
+        cls,
         text: str,
     ) -> list[float]:
-        response = await client.embeddings.create(
-            model=settings.embedding_model,
-            input=text,
+        embedding = cls._model.encode(
+            text,
+            normalize_embeddings=True,
         )
 
-        return response.data[0].embedding
+        return embedding.tolist()
 
-    @staticmethod
+    @classmethod
     async def embed_texts(
+        cls,
         texts: list[str],
     ) -> list[list[float]]:
-        response = await client.embeddings.create(
-            model=settings.embedding_model,
-            input=texts,
+        embeddings = cls._model.encode(
+            texts,
+            normalize_embeddings=True,
         )
 
-        return [item.embedding for item in response.data]
+        return embeddings.tolist()

@@ -4,6 +4,7 @@ from fastapi import Depends, FastAPI
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.router import router as ai_router
 from app.core.config import settings
 from app.db.session import get_db
 from app.knowledge.documents.router import router as documents_router
@@ -30,6 +31,7 @@ app.include_router(subscriptions_router)
 app.include_router(payments_router)
 app.include_router(documents_router)
 app.include_router(search_router)
+app.include_router(ai_router)
 
 
 @app.get("/health")
