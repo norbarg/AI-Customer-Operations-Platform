@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Can I get an automatic refund for $50?",
+    "expected_document": "Refund Policy"
+  },
+  {
+    "question": "What happens if I request a refund above 100 USD?",
+    "expected_document": "Refund Policy"
+  },
+  {
+    "question": "What happens if an Enterprise customer requests a refund above 100 USD?",
+    "expected_document": "Refund Policy"
+  },
+  {
+    "question": "Can a Pro customer cancel immediately?",
+    "expected_document": "Subscription and Billing Policy"
+  },
+  {
+    "question": "What plans does the platform offer?",
+    "expected_document": "Subscription and Billing Policy"
+  },
+  {
+    "question": "Can financial payment records be deleted?",
+    "expected_document": "Subscription and Billing Policy"
+  },
+  {
+    "question": "What priority should be used for a critical production outage?",
+    "expected_document": "Support and SLA Policy"
+  },
+  {
+    "question": "How quickly should an urgent support request receive a response?",
+    "expected_document": "Support and SLA Policy"
+  },
+  {
+    "question": "Does the company provide free lunch to employees?",
+    "expected_document": null
+  },
+  {
+    "question": "What is the employee vacation policy?",
+    "expected_document": null
+  }
+]

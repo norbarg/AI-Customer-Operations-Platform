@@ -43,6 +43,26 @@ class DocumentChunkRepository:
         return list(result.scalars().all())
 
     @staticmethod
+    async def get_by_ids(
+        db: AsyncSession,
+        chunk_ids: list[int],
+    ) -> list[DocumentChunk]:
+        if not chunk_ids:
+            return []
+
+        result = await db.execute(
+            select(DocumentChunk).where(DocumentChunk.id.in_(chunk_ids))
+        )
+
+        chunks = list(result.scalars().all())
+
+        chunks_by_id = {chunk.id: chunk for chunk in chunks}
+
+        return [
+            chunks_by_id[chunk_id] for chunk_id in chunk_ids if chunk_id in chunks_by_id
+        ]
+
+    @staticmethod
     async def delete_by_document_id(
         db: AsyncSession,
         document_id: int,

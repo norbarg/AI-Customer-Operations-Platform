@@ -1,0 +1,39 @@
+[
+  {
+    "question": "Can I get an automatic refund for $50?",
+    "expected_facts": [
+      "Refunds up to 100 USD may be processed automatically",
+      "The payment must be confirmed",
+      "There must be no previous refund for the same transaction",
+      "There must be no signs of fraud or account abuse"
+    ]
+  },
+  {
+    "question": "What happens if I request a refund above 100 USD?",
+    "expected_facts": [
+      "Manager approval is required",
+      "The approval request must include customer ID",
+      "The approval request must include payment ID",
+      "The approval request must include refund amount"
+    ]
+  },
+  {
+    "question": "What priority should be used for a critical production outage?",
+    "expected_facts": [
+      "Urgent priority",
+      "Critical production outage is treated as urgent",
+      "Target first response is within one hour"
+    ]
+  },
+  {
+    "question": "Can financial payment records be deleted?",
+    "expected_facts": [
+      "Financial records should not be physically deleted",
+      "Failed, refunded, and successful payments should remain available"
+    ]
+  },
+  {
+    "question": "Does the company provide free lunch to employees?",
+    "expected_facts": []
+  }
+]

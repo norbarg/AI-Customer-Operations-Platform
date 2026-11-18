@@ -1,6 +1,5 @@
 from sentence_transformers import CrossEncoder
 
-from app.core.config import settings
 from app.knowledge.search.schemas import SearchResult
 
 
@@ -28,13 +27,16 @@ class RerankerService:
         scores = cls._model.predict(pairs)
 
         reranked_results = [
-            result.model_copy(update={"score": float(score)})
+            result.model_copy(
+                update={
+                    "score": float(score),
+                }
+            )
             for result, score in zip(
                 results,
                 scores,
                 strict=True,
             )
-            if float(score) >= settings.rerank_min_score
         ]
 
         reranked_results.sort(
