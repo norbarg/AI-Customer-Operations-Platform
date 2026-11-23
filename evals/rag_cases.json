@@ -18,22 +18,90 @@
     ]
   },
   {
-    "question": "What priority should be used for a critical production outage?",
-    "expected_facts": [
-      "Urgent priority",
-      "Critical production outage is treated as urgent",
-      "Target first response is within one hour"
-    ]
-  },
-  {
     "question": "Can financial payment records be deleted?",
     "expected_facts": [
       "Financial records should not be physically deleted",
-      "Failed, refunded, and successful payments should remain available"
+      "Payment and audit records are retained for seven years"
     ]
   },
   {
+    "question": "What priority should be used for a critical production outage?",
+    "expected_facts": [
+      "Urgent priority"
+    ]
+  },
+
+  {
+    "question": "Can I return equipment after 14 days?",
+    "expected_facts": [
+      "Returns requested after 14 days require manager approval"
+    ]
+  },
+  {
+    "question": "Can lost equipment receive an automatic refund?",
+    "expected_facts": [
+      "Lost equipment is not eligible for an automatic refund",
+      "Lost equipment must be escalated to the operations team"
+    ]
+  },
+
+  {
+    "question": "How long is a password reset link valid?",
+    "expected_facts": [
+      "Password reset links expire after 30 minutes"
+    ]
+  },
+  {
+    "question": "What happens after a confirmed account takeover?",
+    "expected_facts": [
+      "A confirmed account takeover is treated as an urgent security incident",
+      "The incident must be escalated to the security team immediately"
+    ]
+  },
+
+  {
+    "question": "How long are payment and audit records retained?",
+    "expected_facts": [
+      "Payment and audit records are retained for seven years"
+    ]
+  },
+
+  {
+    "question": "How quickly must the first update be published for an urgent incident?",
+    "expected_facts": [
+      "The first customer-facing status update must be published within 30 minutes"
+    ]
+  },
+  {
+    "question": "How often should updates be published during an urgent incident?",
+    "expected_facts": [
+      "Updates must be provided at least once every 60 minutes"
+    ]
+  },
+
+  {
+    "question": "What happens if an urgent security incident affects customer accounts?",
+    "expected_facts": [
+      "The incident must be escalated to the security team",
+      "The first customer-facing update must be published within 30 minutes",
+      "Urgent incidents have a target first response time within one hour"
+    ]
+  },
+
+  {
+    "question": "Look, I want to return the equipment, but it might not arrive within 14 days because the shipping takes a long time. Is that okay?",
+    "expected_facts": [
+      "The policy defines the 14-day rule based on when the return is requested",
+      "The policy does not specify an exception for shipping delays"
+    ]
+  },
+
+  {
     "question": "Does the company provide free lunch to employees?",
+    "expected_facts": []
+  },
+  {
+    "question": "What is the employee vacation policy?",
     "expected_facts": []
   }
 ]

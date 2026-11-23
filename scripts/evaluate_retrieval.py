@@ -30,7 +30,8 @@ async def evaluate() -> None:
     try:
         for case in cases:
             question = case["question"]
-            expected_document = case["expected_document"]
+
+            expected_documents = case["expected_documents"]
 
             candidates = await SearchService.search(
                 db=db,
@@ -47,7 +48,7 @@ async def evaluate() -> None:
 
             print("\n" + "=" * 80)
             print(f"QUESTION: {question}")
-            print(f"EXPECTED: {expected_document}")
+            print(f"EXPECTED: {expected_documents}")
 
             if results:
                 for rank, result in enumerate(
@@ -63,7 +64,9 @@ async def evaluate() -> None:
             else:
                 print("RESULTS: no relevant chunks")
 
-            if expected_document is None:
+            # No-answer case:
+            # expected_documents = []
+            if not expected_documents:
                 total_unanswerable += 1
 
                 if not results:
@@ -83,7 +86,7 @@ async def evaluate() -> None:
                         results,
                         start=1,
                     )
-                    if result.document_title == expected_document
+                    if result.document_title in expected_documents
                 ),
                 None,
             )
@@ -93,6 +96,7 @@ async def evaluate() -> None:
                 continue
 
             hits += 1
+
             reciprocal_rank_sum += 1 / matching_rank
 
             print(f"RESULT: PASS (rank={matching_rank})")

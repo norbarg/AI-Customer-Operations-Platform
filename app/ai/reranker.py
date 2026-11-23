@@ -1,5 +1,6 @@
 from sentence_transformers import CrossEncoder
 
+from app.core.config import settings
 from app.knowledge.search.schemas import SearchResult
 
 
@@ -44,4 +45,15 @@ class RerankerService:
             reverse=True,
         )
 
-        return reranked_results[:limit]
+        best_score = reranked_results[0].score
+
+        filtered_results = [
+            result
+            for result in reranked_results
+            if (
+                result.score >= settings.rerank_min_score
+                and best_score - result.score <= settings.rerank_max_score_gap
+            )
+        ]
+
+        return filtered_results[:limit]

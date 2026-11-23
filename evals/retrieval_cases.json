@@ -1,42 +1,139 @@
 [
   {
     "question": "Can I get an automatic refund for $50?",
-    "expected_document": "Refund Policy"
+    "expected_documents": [
+      "Refund Policy"
+    ]
   },
   {
     "question": "What happens if I request a refund above 100 USD?",
-    "expected_document": "Refund Policy"
+    "expected_documents": [
+      "Refund Policy"
+    ]
   },
   {
     "question": "What happens if an Enterprise customer requests a refund above 100 USD?",
-    "expected_document": "Refund Policy"
+    "expected_documents": [
+      "Refund Policy"
+    ]
   },
   {
     "question": "Can a Pro customer cancel immediately?",
-    "expected_document": "Subscription and Billing Policy"
+    "expected_documents": [
+      "Subscription and Billing Policy"
+    ]
   },
   {
     "question": "What plans does the platform offer?",
-    "expected_document": "Subscription and Billing Policy"
+    "expected_documents": [
+      "Subscription and Billing Policy"
+    ]
   },
   {
     "question": "Can financial payment records be deleted?",
-    "expected_document": "Subscription and Billing Policy"
+    "expected_documents": [
+      "Subscription and Billing Policy",
+      "Data Export and Retention Policy"
+    ]
   },
   {
     "question": "What priority should be used for a critical production outage?",
-    "expected_document": "Support and SLA Policy"
+    "expected_documents": [
+      "Support and SLA Policy"
+    ]
   },
   {
     "question": "How quickly should an urgent support request receive a response?",
-    "expected_document": "Support and SLA Policy"
+    "expected_documents": [
+      "Support and SLA Policy"
+    ]
+  },
+
+  {
+    "question": "Can I return equipment after 14 days?",
+    "expected_documents": [
+      "Equipment Return Policy"
+    ]
   },
   {
+    "question": "What happens if returned equipment is damaged?",
+    "expected_documents": [
+      "Equipment Return Policy"
+    ]
+  },
+  {
+    "question": "Can lost equipment receive an automatic refund?",
+    "expected_documents": [
+      "Equipment Return Policy"
+    ]
+  },
+
+  {
+    "question": "How long is a password reset link valid?",
+    "expected_documents": [
+      "Account Security Policy"
+    ]
+  },
+  {
+    "question": "Is MFA required for administrator accounts?",
+    "expected_documents": [
+      "Account Security Policy"
+    ]
+  },
+  {
+    "question": "What happens after a confirmed account takeover?",
+    "expected_documents": [
+      "Account Security Policy"
+    ]
+  },
+
+  {
+    "question": "How long are payment and audit records retained?",
+    "expected_documents": [
+      "Data Export and Retention Policy"
+    ]
+  },
+  {
+    "question": "How quickly should a standard data export be prepared?",
+    "expected_documents": [
+      "Data Export and Retention Policy"
+    ]
+  },
+
+  {
+    "question": "How quickly must the first update be published for an urgent incident?",
+    "expected_documents": [
+      "Incident Communication Policy"
+    ]
+  },
+  {
+    "question": "How often should updates be published during an urgent incident?",
+    "expected_documents": [
+      "Incident Communication Policy"
+    ]
+  },
+  {
+    "question": "Can credentials be included in a public incident message?",
+    "expected_documents": [
+      "Incident Communication Policy"
+    ]
+  },
+
+  {
+    "question": "What happens if an urgent security incident affects customer accounts?",
+    "expected_documents": [
+      "Account Security Policy",
+      "Incident Communication Policy",
+      "Support and SLA Policy"
+    ]
+  },
+
+  {
     "question": "Does the company provide free lunch to employees?",
-    "expected_document": null
+    "expected_documents": []
   },
   {
     "question": "What is the employee vacation policy?",
-    "expected_document": null
+    "expected_documents": []
   }
 ]

@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     hybrid_rrf_k: int = 60
 
     rerank_candidate_limit: int = 10
+    rerank_max_score_gap: float = 6.0
+    rerank_min_score: float = -5.0
 
     openrouter_judge_model: str = "openrouter/free"
 

@@ -1,12 +1,23 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    File,
+    Form,
+    HTTPException,
+    UploadFile,
+    status,
+)
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
 from app.knowledge.documents.chunk_repository import DocumentChunkRepository
 from app.knowledge.documents.chunk_service import DocumentChunkService
 from app.knowledge.documents.indexing_service import DocumentIndexingService
+from app.knowledge.documents.ingestion_service import (
+    DocumentIngestionService,
+)
 from app.knowledge.documents.schemas import (
     DocumentChunkResponse,
     DocumentCreate,
@@ -132,3 +143,41 @@ async def index_document(
     return {
         "indexed_chunks": indexed_chunks,
     }
+
+
+@router.post(
+    "/upload",
+    response_model=DocumentResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+async def upload_document(
+    title: Annotated[str, Form()],
+    file: Annotated[UploadFile, File()],
+    db: Annotated[
+        AsyncSession,
+        Depends(get_db),
+    ],
+) -> DocumentResponse:
+    if not file.filename:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Uploaded file must have a filename",
+        )
+
+    content = await file.read()
+
+    if not content:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Uploaded file is empty",
+        )
+
+    document = await DocumentIngestionService.ingest(
+        db=db,
+        title=title,
+        filename=file.filename,
+        mime_type=file.content_type,
+        file_content=content,
+    )
+
+    return DocumentResponse.model_validate(document)

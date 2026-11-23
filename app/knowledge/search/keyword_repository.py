@@ -1,3 +1,5 @@
+import re
+
 from sqlalchemy import func, literal_column, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -7,6 +9,17 @@ from app.knowledge.search.schemas import SearchResult
 
 
 class KeywordSearchRepository:
+    @staticmethod
+    def _build_or_query(
+        query: str,
+    ) -> str:
+        words = re.findall(
+            r"[A-Za-z0-9]+",
+            query.lower(),
+        )
+
+        return " OR ".join(words)
+
     @staticmethod
     async def search(
         db: AsyncSession,
@@ -20,9 +33,11 @@ class KeywordSearchRepository:
             DocumentChunk.content,
         )
 
+        keyword_query = KeywordSearchRepository._build_or_query(query)
+
         search_query = func.websearch_to_tsquery(
             english_config,
-            query,
+            keyword_query,
         )
 
         rank = func.ts_rank_cd(
@@ -58,5 +73,9 @@ class KeywordSearchRepository:
                 content=chunk.content,
                 score=float(rank_value),
             )
-            for chunk, document_title, rank_value in rows
+            for (
+                chunk,
+                document_title,
+                rank_value,
+            ) in rows
         ]
