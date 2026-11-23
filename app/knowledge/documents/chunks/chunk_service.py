@@ -1,9 +1,9 @@
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.knowledge.documents.chunk_models import DocumentChunk
-from app.knowledge.documents.chunk_repository import DocumentChunkRepository
-from app.knowledge.documents.chunker import TextChunker
+from app.knowledge.documents.chunks.chunk_models import DocumentChunk
+from app.knowledge.documents.chunks.chunk_repository import DocumentChunkRepository
+from app.knowledge.documents.chunks.chunker import TextChunker
 from app.knowledge.documents.repository import DocumentRepository
 from app.knowledge.documents.schemas import DocumentUpdate
 

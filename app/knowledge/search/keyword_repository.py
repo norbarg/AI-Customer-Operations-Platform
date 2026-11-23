@@ -3,7 +3,7 @@ import re
 from sqlalchemy import func, literal_column, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.knowledge.documents.chunk_models import DocumentChunk
+from app.knowledge.documents.chunks.chunk_models import DocumentChunk
 from app.knowledge.documents.models import Document
 from app.knowledge.search.schemas import SearchResult
 

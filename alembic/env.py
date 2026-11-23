@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 from app.core.config import settings
 from app.db.base import Base
-from app.knowledge.documents.chunk_models import DocumentChunk  # noqa: F401
+from app.knowledge.documents.chunks.chunk_models import DocumentChunk  # noqa: F401
 from app.knowledge.documents.models import Document  # noqa: F401
 from app.modules.approvals.models import Approval  # noqa: F401
 from app.modules.customers.models import Customer  # noqa: F401

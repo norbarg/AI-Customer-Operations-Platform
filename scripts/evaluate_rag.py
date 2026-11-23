@@ -6,7 +6,7 @@ from app.ai.evaluation import SemanticEvaluator
 from app.ai.judge import LLMJudge
 from app.ai.rag_service import RAGService
 from app.db.session import get_db
-from app.knowledge.documents.chunk_repository import (
+from app.knowledge.documents.chunks.chunk_repository import (
     DocumentChunkRepository,
 )
 

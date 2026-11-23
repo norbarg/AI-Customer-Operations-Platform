@@ -1,14 +1,14 @@
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.knowledge.documents.chunk_service import (
+from app.knowledge.documents.chunks.chunk_service import (
     DocumentChunkService,
 )
-from app.knowledge.documents.file_extractor import (
+from app.knowledge.documents.ingestion.file_extractor import (
     FileTextExtractor,
     UnsupportedFileTypeError,
 )
-from app.knowledge.documents.indexing_service import (
+from app.knowledge.documents.ingestion.indexing_service import (
     DocumentIndexingService,
 )
 from app.knowledge.documents.repository import (

@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.embeddings import EmbeddingService
 from app.core.config import settings
-from app.knowledge.documents.chunk_repository import DocumentChunkRepository
+from app.knowledge.documents.chunks.chunk_repository import DocumentChunkRepository
 from app.knowledge.documents.repository import DocumentRepository
 from app.knowledge.documents.schemas import DocumentUpdate
 from app.knowledge.vector.qdrant import ensure_collection, qdrant_client

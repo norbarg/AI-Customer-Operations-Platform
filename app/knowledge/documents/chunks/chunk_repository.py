@@ -1,7 +1,7 @@
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.knowledge.documents.chunk_models import DocumentChunk
+from app.knowledge.documents.chunks.chunk_models import DocumentChunk
 
 
 class DocumentChunkRepository:

@@ -12,10 +12,10 @@ from fastapi import (
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
-from app.knowledge.documents.chunk_repository import DocumentChunkRepository
-from app.knowledge.documents.chunk_service import DocumentChunkService
-from app.knowledge.documents.indexing_service import DocumentIndexingService
-from app.knowledge.documents.ingestion_service import (
+from app.knowledge.documents.chunks.chunk_repository import DocumentChunkRepository
+from app.knowledge.documents.chunks.chunk_service import DocumentChunkService
+from app.knowledge.documents.ingestion.indexing_service import DocumentIndexingService
+from app.knowledge.documents.ingestion.ingestion_service import (
     DocumentIngestionService,
 )
 from app.knowledge.documents.schemas import (
