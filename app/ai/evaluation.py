@@ -20,9 +20,9 @@ class SemanticEvaluator:
         expected_fact: str,
         answer: str,
     ) -> SemanticMatch:
-        sentences = cls._split_sentences(answer)
+        fragments = cls._split_fragments(answer)
 
-        if not sentences:
+        if not fragments:
             return SemanticMatch(
                 score=0.0,
                 sentence="",
@@ -33,25 +33,25 @@ class SemanticEvaluator:
             normalize_embeddings=True,
         )
 
-        sentence_embeddings = cls._model.encode(
-            sentences,
+        fragment_embeddings = cls._model.encode(
+            fragments,
             normalize_embeddings=True,
         )
 
         similarities = cos_sim(
             fact_embedding,
-            sentence_embeddings,
+            fragment_embeddings,
         )[0]
 
         best_index = int(similarities.argmax().item())
 
         return SemanticMatch(
             score=float(similarities[best_index].item()),
-            sentence=sentences[best_index],
+            sentence=fragments[best_index],
         )
 
     @staticmethod
-    def _split_sentences(
+    def _split_fragments(
         text: str,
     ) -> list[str]:
         sentences = re.split(
@@ -59,4 +59,26 @@ class SemanticEvaluator:
             text.strip(),
         )
 
-        return [sentence.strip() for sentence in sentences if sentence.strip()]
+        fragments: list[str] = []
+
+        for sentence in sentences:
+            sentence = sentence.strip()
+
+            if not sentence:
+                continue
+
+            fragments.append(sentence)
+
+            clauses = re.split(
+                r"\s*(?:,|;|\band\b|\bbut\b)\s*",
+                sentence,
+                flags=re.IGNORECASE,
+            )
+
+            for clause in clauses:
+                clause = clause.strip(" -*•\t")
+
+                if clause and clause != sentence and len(clause) >= 10:
+                    fragments.append(clause)
+
+        return list(dict.fromkeys(fragments))
